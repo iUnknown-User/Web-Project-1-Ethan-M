@@ -1,84 +1,164 @@
-<!DOCTYPE html>​
+<!DOCTYPE html>
+<html lang="en-us">
+  <!--the backend code was written by chatgpt-->
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Games</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
 
-<html lang="en-us">​
+      .topnav {
+        overflow: hidden;
+        background-color: #333;
+      }
 
-<head>​
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
 
-  <meta charset="utf-8"/>​
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
 
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=yes"/>​
+      .topnav a.active {
+        background-color: #04aa6d;
+        color: white;
+      }
 
-  <title>Games</title>​
+      .content {
+        padding: 20px;
+        text-align: center;
+      }
 
-</head>​
+      h2 {
+        margin-top: 20px;
+      }
 
-<body>​
-  <header>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-  body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .topnav {
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .topnav a.active {
-    background-color: #04AA6D;
-    color: white;
-  }
-  </style>
+      .results {
+        margin-top: 20px;
+        text-align: left;
+        display: inline-block;
+      }
+    </style>
   </head>
   <body>
-  
-  <div class="topnav">
-    <a class="active" href="index.html">Home</a>
-    <a href="games.html">Buy Games</a>
-    <a href="about.html">About</a>
-  </div>
-</header>
-<form>
-  <input type="button" value = "click me!">
-</form>
-<div>
-  <center>
-  <h2>About Page</h2>
-  </center>
-  <p>yap about something</p>
-  <form id="voting-form">
-    <h2>Who is the better Ethan?</h2>
-    <input type="radio" id="ethan-m" name="ethan" value="Ethan M">
-    <label for="ethan-m">Ethan M</label>
-    <br/>
-    <input type="radio" id="ethan-g" name="ethan" value="Ethan G">
-    <label for="ethan-g">Ethan G</label>
-    <br/>
-    <input type="radio" id="ethan-z" name="ethan" value="Ethan Z">
-    <label for="ethan-z">Ethan Z</label>
-    <br/>
-    <input type="submit" value="Vote">
-    <!--this code came from w3 schools-->
-</form>
+    <header>
+      <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="games.html">Buy Games</a>
+        <a href="about.html">About</a>
+      </div>
+    </header>
 
-  
-</div>
-</body>​
+    <h2 style="text-align: center">
+      About the creator: Ethan M is an amazing scripter and is naturally good at
+      technology, but there are 3 different Ethans in his class: Ethan G, Ethan
+      Z, and Ethan M. Choose who is your favorite Ethan now.
+    </h2>
 
+    <div class="content">
+      <!-- this form was made by me
+      this is an important part of my webpage because it polls the user on who is the better ethan-->
+      <form id="pollForm">
+        <h2>Who is the better Ethan?</h2>
+        <input type="radio" id="ethan-m" name="ethan" value="Ethan M" />
+        <label for="ethan-m">Ethan</label><br />
+        <input type="radio" id="ethan-g" name="ethan" value="Ethan G" />
+        <label for="ethan-g">Ethan</label><br />
+        <input type="radio" id="ethan-z" name="ethan" value="Ethan Z" />
+        <label for="ethan-z">Ethan</label><br /><br />
+        <input
+          type="text"
+          id="name"
+          placeholder="Enter your name"
+          required /><br /><br />
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Reset" />
+        <br />
+        <input type="datetime-local" />
+      </form>
+
+      <div class="results" id="results"></div>
+    </div>
+
+    <script>
+      const pollForm = document.getElementById("pollForm");
+      const resultsDiv = document.getElementById("results");
+
+      const votes = JSON.parse(localStorage.getItem("votes")) || {
+        "Ethan M": [],
+        "Ethan G": [],
+        "Ethan Z": [],
+      };
+
+      const nameTracker = JSON.parse(localStorage.getItem("nameTracker")) || {};
+      let ethanMCount = parseInt(localStorage.getItem("ethanMCount")) || 0;
+
+      // Display initial results from localStorage
+      displayResults();
+
+      pollForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const selectedEthan = document.querySelector(
+          'input[name="ethan"]:checked'
+        );
+        const nameInput = document.getElementById("name").value.trim();
+
+        if (!selectedEthan) {
+          alert("Please select an Ethan.");
+          return;
+        }
+
+        const ethanValue = selectedEthan.value;
+
+        // Check name constraints
+        if (nameTracker[nameInput]) {
+          alert("This name has already been used.");
+          return;
+        } else if (nameInput.toLowerCase() === "ethan") {
+          if (ethanMCount >= 3) {
+            alert("The name 'Ethan' can only be used 3 times.");
+            return;
+          } else {
+            ethanMCount++;
+          }
+        }
+
+        // Record the vote
+        votes[ethanValue].push(nameInput);
+        nameTracker[nameInput] = true;
+
+        // Save to localStorage
+        localStorage.setItem("votes", JSON.stringify(votes));
+        localStorage.setItem("nameTracker", JSON.stringify(nameTracker));
+        localStorage.setItem("ethanMCount", ethanMCount);
+
+        // Display results
+        displayResults();
+        pollForm.reset();
+      });
+
+      function displayResults() {
+        resultsDiv.innerHTML = "<h2>Current Votes:</h2>";
+        for (const ethan in votes) {
+          resultsDiv.innerHTML += `<p>${ethan}: ${
+            votes[ethan].length
+          } votes (${votes[ethan].join(", ")})</p>`;
+        }
+      }
+    </script>
+  </body>
 </html>
