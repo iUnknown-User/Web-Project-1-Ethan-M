@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <!--the backend code was written by chatgpt-->
   <head>
     <meta charset="utf-8" />
     <meta
@@ -55,43 +54,65 @@
   </head>
   <body>
     <header>
-      <div class="topnav">
+      <nav class="topnav">
         <a class="active" href="index.html">Home</a>
         <a href="games.html">Buy Games</a>
         <a href="about.html">About</a>
-      </div>
+      </nav>
     </header>
-
-    <h2 style="text-align: center">
-      About the creator: Ethan M is an amazing scripter and is naturally good at
-      technology, but there are 3 different Ethans in his class: Ethan G, Ethan
-      Z, and Ethan M. Choose who is your favorite Ethan now.
-    </h2>
-
-    <div class="content">
-      <!-- this form was made by me
-      this is an important part of my webpage because it polls the user on who is the better ethan-->
-      <form id="pollForm">
-        <h2>Who is the better Ethan?</h2>
-        <input type="radio" id="ethan-m" name="ethan" value="Ethan M" />
-        <label for="ethan-m">Ethan</label><br />
-        <input type="radio" id="ethan-g" name="ethan" value="Ethan G" />
-        <label for="ethan-g">Ethan</label><br />
-        <input type="radio" id="ethan-z" name="ethan" value="Ethan Z" />
-        <label for="ethan-z">Ethan</label><br /><br />
-        <input
-          type="text"
-          id="name"
-          placeholder="Enter your name"
-          required /><br /><br />
-        <input type="submit" value="Submit" />
-        <input type="reset" value="Reset" />
-        <br />
-        <input type="datetime-local" />
-      </form>
-
-      <div class="results" id="results"></div>
-    </div>
+    <!--this section i did and created a table of traits of ethan's and a poll system-->
+    <main>
+      <h2 style="text-align: center">
+        About the creator: Ethan M is an amazing scripter and is naturally good
+        at technology, but there are 3 different Ethans in his class: Ethan G,
+        Ethan Z, and Ethan M. Choose who is your favorite Ethan now.
+      </h2>
+      <table style="text-align: center; border-collapse: collapse; width: 100%">
+        <tr>
+          <th>Ethan</th>
+          <th>Ethan</th>
+          <th>Ethan</th>
+        </tr>
+        <tr>
+          <td>Amazing at ptec</td>
+          <td>A nerd</td>
+          <td>Funny Man</td>
+        </tr>
+        <tr>
+          <td>A Kool Kid</td>
+          <td>A Kool Kid</td>
+          <td>A Kool Kid</td>
+        </tr>
+        <tr>
+          <td>ok at fort</td>
+          <td>DA goat at fort and da best at builds</td>
+          <td>bad at fort</td>
+        </tr>
+      </table>
+      <!--this works by allowing for only 1 radio option and submiting it to the server-->
+      <div class="content">
+        <form id="pollForm">
+          <h2>Who is the better Ethan?</h2>
+          <input type="radio" id="ethan-m" name="ethan" value="Ethan M" />
+          <label for="ethan-m">Ethan</label><br />
+          <input type="radio" id="ethan-g" name="ethan" value="Ethan G" />
+          <label for="ethan-g">Ethan</label><br />
+          <input type="radio" id="ethan-z" name="ethan" value="Ethan Z" />
+          <label for="ethan-z">Ethan</label><br /><br />
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+            required /><br /><br />
+          <input type="submit" value="Submit" />
+          <input type="reset" value="Reset" />
+          <br />
+          <input type="datetime-local" />
+        </form>
+        <!--this was chatgpt that did the rest down here to make poll functionality-->
+        <div class="results" id="results"></div>
+      </div>
+    </main>
 
     <script>
       const pollForm = document.getElementById("pollForm");

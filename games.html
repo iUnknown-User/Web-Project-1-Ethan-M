@@ -6,7 +6,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <title>Games</title>
-    <!--this part was from w3 schools to make the title page-->
     <style>
       body {
         margin: 0;
@@ -101,49 +100,54 @@
 
   <body>
     <header>
-      <div class="topnav">
+      <nav class="topnav">
         <a class="active" href="index.html">Home</a>
         <a href="games.html">Buy Games</a>
         <a href="about.html">About</a>
-      </div>
+      </nav>
     </header>
-    <!--this code i did myself -->
-    <div class="content">
-      <h2>Games Page</h2>
+
+    <main class="content">
+      <h1>Games Page</h1>
       <p>Explore my game options below</p>
-      <!--this section is my first item to sell-->
-      <div class="game-description">
+
+      <!-- Game Item #1 -->
+      <section class="game-description">
         <div>
           <h2>Item #1: Fighting Game</h2>
           <p>
             In this game, you can fight other Roblox players like Ethan G! To
             play, click the "<mark>E</mark>" key to fight. This game is selling
-            for $29.99 buy now before it's gone!
+            for $29.99. Buy now before it's gone!
           </p>
           <button type="button" class="buy-button">
+            <!--this takes you to the palpal website-->
             <a href="https://www.paypal.com/ca/home">Buy Now!</a>
           </button>
         </div>
         <img src="Pictures/roblx.PNG" alt="Roblox Fighting Game" />
-      </div>
-      <!--this section is my second item to sell-->
-      <div class="game-description">
+      </section>
+
+      <!-- Game Item #2 -->
+      <section class="game-description">
         <div>
           <h2>Item #2: TDS Game</h2>
           <p>
-            In this game, you can place down different types of towers to delete
-            the random noobs that spawn. The game is selling for
-            <u>$99.99 </u>with a 0.01 cent discount only for the
+            In this game, you can place down different types of towers to defeat
+            the random enemies that spawn. The game is selling for
+            <u>$99.99</u> with a 0.01 cent discount only for the
             <b>next minute!</b>.
           </p>
           <button type="button" class="buy-button">
+            <!--this takes you to the palpal website-->
             <a href="https://www.paypal.com/ca/home">Buy Now!</a>
           </button>
         </div>
         <img src="Pictures/ronnox.PNG" alt="Roblox TDS Game" />
-      </div>
-      <!--this section is my third item to sell-->
-      <div class="game-description">
+      </section>
+
+      <!-- Game Item #3 -->
+      <section class="game-description">
         <div>
           <h2>Item #3: This Website</h2>
           <p>
@@ -152,19 +156,23 @@
             Buy it now before someone else takes this amazing website!
           </p>
           <button type="button" class="buy-button">
+            <!--this takes you to the palpal website-->
             <a href="https://www.paypal.com/ca/home">Buy Now!</a>
           </button>
         </div>
-        <img src="Pictures/web.PNG" alt="Roblox TDS Game" />
-      </div>
-      <!--this is the video that i used to make my TDS Game-->
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/DanjB0cTfw0?si=jK7X_pwKws2pDlaV"
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-    </div>
+        <img src="Pictures/web.PNG" alt="this website" />
+      </section>
+
+      <!-- youtube Video Section -->
+      <section>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/DanjB0cTfw0?si=jK7X_pwKws2pDlaV"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </section>
+    </main>
   </body>
 </html>
